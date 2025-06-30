@@ -1,13 +1,30 @@
-import Link from "next/link"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, HardDrive, Cpu, Layers, FileText, Database, Network } from "lucide-react"
+import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  ArrowRight,
+  HardDrive,
+  Cpu,
+  Layers,
+  FileText,
+  Database,
+  Network,
+  RefreshCw,
+} from "lucide-react";
 
 export default function NotesPage() {
   const topics = [
     {
       title: "Memory Management",
-      description: "Virtual memory, paging, segmentation, and address translation",
+      description:
+        "Virtual memory, paging, segmentation, and address translation",
       icon: <HardDrive className="h-5 w-5" />,
       href: "/notes/memory-management",
     },
@@ -25,7 +42,8 @@ export default function NotesPage() {
     },
     {
       title: "CPU Scheduling",
-      description: "FCFS, SJF, Round Robin, Priority, and multilevel queue scheduling",
+      description:
+        "FCFS, SJF, Round Robin, Priority, and multilevel queue scheduling",
       icon: <Cpu className="h-5 w-5" />,
       href: "/notes/cpu-scheduling",
     },
@@ -37,13 +55,15 @@ export default function NotesPage() {
     },
     {
       title: "Process Management",
-      description: "Process states, PCB, context switching, and process creation",
+      description:
+        "Process states, PCB, context switching, and process creation",
       icon: <FileText className="h-5 w-5" />,
       href: "/notes/process-management",
     },
     {
       title: "File Systems",
-      description: "File allocation methods, directory structures, and file operations",
+      description:
+        "File allocation methods, directory structures, and file operations",
       icon: <Database className="h-5 w-5" />,
       href: "/notes/file-systems",
     },
@@ -59,13 +79,14 @@ export default function NotesPage() {
       icon: <Network className="h-5 w-5" />,
       href: "/notes/synchronization",
     },
-  ]
+  ];
 
   return (
     <div className="container py-10">
       <h1 className="text-4xl font-bold mb-6">OS Concept Notes</h1>
       <p className="text-lg text-muted-foreground mb-12">
-        Comprehensive notes on operating system concepts with diagrams and examples.
+        Comprehensive notes on operating system concepts with diagrams and
+        examples.
       </p>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -80,12 +101,41 @@ export default function NotesPage() {
             </CardHeader>
             <CardContent className="flex-1">
               <div className="h-32 bg-muted rounded-md flex items-center justify-center">
-                <FileText className="h-10 w-10 text-muted-foreground/50" />
+                {topic.title === "Memory Management" && (
+                  <HardDrive className="h-16 w-16 text-primary" />
+                )}
+                {topic.title === "Paging" && (
+                  <Layers className="h-16 w-16 text-primary" />
+                )}
+                {topic.title === "Page Replacement" && (
+                  <RefreshCw className="h-16 w-16 text-primary" />
+                )}
+                {topic.title === "CPU Scheduling" && (
+                  <Cpu className="h-16 w-16 text-primary" />
+                )}
+                {topic.title === "Disk Scheduling" && (
+                  <HardDrive className="h-16 w-16 text-primary" />
+                )}
+                {topic.title === "Process Management" && (
+                  <FileText className="h-16 w-16 text-primary" />
+                )}
+                {topic.title === "File Systems" && (
+                  <Database className="h-16 w-16 text-primary" />
+                )}
+                {topic.title === "Deadlocks" && (
+                  <Network className="h-16 w-16 text-primary" />
+                )}
+                {topic.title === "Synchronization" && (
+                  <Network className="h-16 w-16 text-primary" />
+                )}
               </div>
             </CardContent>
             <CardFooter>
               <Button asChild variant="ghost" className="w-full">
-                <Link href={topic.href} className="flex items-center justify-between">
+                <Link
+                  href={topic.href}
+                  className="flex items-center justify-between"
+                >
                   <span>Read Notes</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -95,5 +145,5 @@ export default function NotesPage() {
         ))}
       </div>
     </div>
-  )
+  );
 }
