@@ -1,6 +1,5 @@
 import type React from "react";
 import type { Metadata } from "next/types";
-import { Solway, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
@@ -8,9 +7,6 @@ import Footer from "@/components/footer";
 import { AnimatedBackground } from "@/components/animated-background";
 import { AuthProvider } from "@/contexts/auth-context";
 import GoogleAnalytics from "@/components/google-analytics";
-
-const solway = Solway({ weight: ["400", "700"], subsets: ["latin"] });
-const dmmono = DM_Mono({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "OSimulate - Learn Operating Systems Visually",
@@ -27,11 +23,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
         <GoogleAnalytics />
       </head>
-      <body
-        className={`${solway.className} min-h-screen flex flex-col font-sans`}
-      >
+      <body className="min-h-screen flex flex-col font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
