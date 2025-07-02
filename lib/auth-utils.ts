@@ -1,52 +1,44 @@
-import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
+import { createClient } from '@/lib/supabase/server'
+import { redirect } from 'next/navigation'
 
 export async function getUser() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
-
+  const supabase = await createClient()
+  const { data: { user }, error } = await supabase.auth.getUser()
+  
   if (error) {
-    console.error("Error getting user:", error.message);
-    return null;
+    console.error('Error getting user:', error.message)
+    return null
   }
-
-  return user;
+  
+  return user
 }
 
-// WARNING: Do NOT use getSession() for authentication or authorization checks.
-// The session user object may not be authentic. Use getUser() for secure checks.
 export async function getSession() {
-  const supabase = await createClient();
-  const {
-    data: { session },
-    error,
-  } = await supabase.auth.getSession();
-
+  const supabase = await createClient()
+  const { data: { session }, error } = await supabase.auth.getSession()
+  
   if (error) {
-    console.error("Error getting session:", error.message);
-    return null;
+    console.error('Error getting session:', error.message)
+    return null
   }
-
-  return session;
+  
+  return session
 }
 
 export async function requireAuth() {
-  const user = await getUser();
-
+  const user = await getUser()
+  
   if (!user) {
-    redirect("/auth/login");
+    redirect('/auth/login')
   }
-
-  return user;
+  
+  return user
 }
 
 export async function requireNoAuth() {
-  const user = await getUser();
-
+  const user = await getUser()
+  
   if (user) {
-    redirect("/dashboard");
+    redirect('/dashboard')
   }
 }
