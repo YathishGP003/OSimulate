@@ -6,11 +6,11 @@
   :root {
     /* AI-SEO-Landing-Page lighter blue-purple palette */
     --background: 226 73% 97%; /* #F4F7FE */
-    --foreground: 251 28% 22%; /* #2D235A for headings */
+    --foreground: 0 0% 100%; /* #FFFFFF */
     --card: 226 73% 97%; /* #F4F7FE */
-    --card-foreground: 251 20% 36%; /* #4B4B5C for body text */
+    --card-foreground: 0 0% 100%; /* #FFFFFF */
     --popover: 226 73% 97%;
-    --popover-foreground: 251 20% 36%;
+    --popover-foreground: 0 0% 100%;
     --primary: 251 81% 69%; /* #7B6CF6 */
     --primary-foreground: 0 0% 100%;
     --secondary: 246 100% 68%; /* #6C63FF */
@@ -211,13 +211,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.32);
-}
-
-@layer utilities {
-  .text-primary {
-    color: hsl(var(--foreground));
-  }
-  .text-secondary {
-    color: hsl(var(--card-foreground));
-  }
 }
