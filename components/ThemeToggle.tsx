@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
@@ -39,20 +40,10 @@ const ThemeToggle: React.FC = () => {
       className="rounded-full glass shadow-sm hover:bg-white/30 dark:hover:bg-black/30"
     >
       <div className="relative w-5 h-5 overflow-hidden">
-        <Sun
-          className="absolute h-5 w-5 transition-all duration-300 transform"
-          style={{
-            opacity: isDarkMode ? 1 : 0,
-            transform: isDarkMode ? "rotate(0deg)" : "rotate(90deg)",
-          }}
-        />
-        <Moon
-          className="absolute h-5 w-5 transition-all duration-300 transform"
-          style={{
-            opacity: isDarkMode ? 0 : 1,
-            transform: isDarkMode ? "rotate(-90deg)" : "rotate(0deg)",
-          }}
-        />
+        <Sun className="absolute h-5 w-5 transition-all duration-300 transform" 
+          style={{opacity: isDarkMode ? 1 : 0, transform: isDarkMode ? 'rotate(0deg)' : 'rotate(90deg)'}} />
+        <Moon className="absolute h-5 w-5 transition-all duration-300 transform" 
+          style={{opacity: isDarkMode ? 0 : 1, transform: isDarkMode ? 'rotate(-90deg)' : 'rotate(0deg)'}} />
       </div>
     </Button>
   );
